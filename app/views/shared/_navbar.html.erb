@@ -1,0 +1,63 @@
+<!-- Static navbar -->
+<nav class="navbar navbar-default navbar-static-top " >
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "MercadoCentral", '/', class: "navbar-brand"%>
+      
+    </div>
+    <div id="navbar" class="navbar-collapse collapse " >
+
+      <%= form_tag search_path, class: "navbar-form navbar-left", method: :get do %>
+      <div class="form-group">
+        <%= text_field_tag :search, params[:search], placeholder: "¿Donde vas a comer?", class: "form-control"%>
+      </div>
+      <% end %>
+      <ul class="nav navbar-nav navbar-right">
+
+        
+
+        <% if(!user_signed_in?) %>
+        <li><%= link_to "Resístrate", new_user_registration_path %></li>
+        <li><%= link_to "Iniciar sesión", new_user_session_path %></li>
+        <% else %>
+        <li>
+          <%= link_to conversations_path do %>
+          <i class="fa fa-envelope-o" aria-hidden="true"></i> Messages</a>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_comida_path do %>
+          <i class="fa fa-home fa-lg"></i> Conviertete en Cheff</a>
+          <% end %>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <%= image_tag avatar_url(current_user), class: "img-circle avatar-small" %>&nbsp;
+            <%= current_user.fullname %> <span class="caret"></span>
+          </a>
+
+          <ul class="dropdown-menu">
+            <li><%= link_to "Tus Platillos", comidas_path %></li>
+            <li><%= link_to "Tus Pedidos", tus_pedidos_path %></li>
+            <li><%= link_to "Tus Ventas", tus_ventas_path %></li>
+            <li><a href="#">Wish Lists</a></li> 
+            
+            <li role="separator" class="divider"></li>
+            <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+            <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </li>
+        <% end %>
+
+        
+      </ul>
+      
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>

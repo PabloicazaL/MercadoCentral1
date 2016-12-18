@@ -1,0 +1,46 @@
+<div class="container fill">
+<div class="row">
+	<div class="col-md-3">
+		<ul class="sidebar-list">
+			<li class="sidebar-item"><%= link_to "Tus Platillos", comidas_path, class: "sidebar-link" %></li>
+			<li class="sidebar-item"><%= link_to "Tus Ventas", tus_ventas_path, class: "sidebar-link" %></li>
+			<li class="sidebar-item"><%= link_to "Tus Pedidos", tus_pedidos_path, class: "sidebar-link active" %></li>
+			
+		</ul>
+	</div>
+	<div class="col-md-9">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Tus Pedidos
+			</div>
+			<div class="panel-body">
+				
+				<% @pedidos.each do |orden| %>
+					<div class="row">
+						<div class="col-md-2">
+							<%= orden.fecha_pedido.strftime('%v') %>
+							<%= orden.fecha_pedido.strftime('%r') %>
+						</div>
+						<div class="col-md-2">
+							<%= link_to comida_path(orden.comida) do%>
+							<%= image_tag orden.comida.show_first_photo(:thumb)%>
+							<% end %>
+						</div>
+						<div class="col-md-4"></div>
+						<div class="col-md-2">
+							<%= link_to user_path(orden.comida.user) do%>
+							<%= image_tag avatar_url(orden.comida.user), class: "img-circle avatar-medium"%>
+							<% end %>
+						</div>
+						<div class="col-md-2 right">
+							<h4>$<%= orden.total %></h4>
+						</div>
+					</div>
+					<hr>
+				<% end %>
+
+			</div>
+		</div>
+	</div>
+</div>
+</div>

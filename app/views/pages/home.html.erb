@@ -1,0 +1,111 @@
+<div class="row-space-2">
+    <div style="height:570px;">
+        <div class="home-boss">
+            <div class="home-cadet">
+                <h1 class="titulo-home">Disfruta de la mejor comida hecha en casa</h1>
+                <p class="subtitulo-home">Disfruta de experiencias por toda la republica</p>
+                <p style="margin:15px 0 11px;text-align:center;">
+                    <a href="https://itunes.apple.com" style="margin-right:15px;">
+                        <img src="/assets/download_apple.png" alt="Download MercadoCentral iOS App" target="_blank" width="135" height="40" />
+                    </a>
+                    <a href="https://play.google.com/"><img src="/assets/download_google.png" alt="Download MercadoCentral Android App" target="_blank" width="135" height="40"/>
+                    </a>
+                </p>
+            </div>
+
+            <div style="position:absolute;left:0;right:0;bottom:-23px;max-width:745px;margin:auto;" class="container">
+                <div class="row">
+                    <%= form_tag search_path, method: :get do %>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <%= text_field_tag :search, params[:search], placeholder: "¿Desde donde vas a comer?", class: "form-control" %>
+                            </div>
+
+                            <div class="col-md-2">
+                                <%= submit_tag "Search", class: "btn btn-primary" %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+<hr>
+<br>
+
+<div class="text-center">
+	<h2>Descubre en tu ciudad</h2>
+	<p>Nuevas recetas a la vuelta, encuentra tu ciudad y empieza a disfrutar.</p>
+</div>
+
+<br>
+
+<div class="row">
+	<div class="col-md-4 col-sm-12">
+		<a href="http://localhost:3000/search?utf8=%E2%9C%93&search=Mexico+D.F." class="link-nombre">
+			<div class="discovery-card" style="background-image: url('/assets/ciudad-de-mexico.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h2><strong>Mexico D.F.</strong></h2>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+
+	<div class="col-md-4 col-sm-6">
+		<a href="http://localhost:3000/search?utf8=%E2%9C%93&search=Monterrey" class="link-nombre">
+			<div class="discovery-card" style="background-image: url('/assets/Fundidora.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h2><strong>Monterrey</strong></h2>
+					</div>
+				</div>		
+			</div>
+		</a>
+	</div>
+
+	<div class="col-md-4 col-sm-6">
+		<a href="http://localhost:3000/search?utf8=%E2%9C%93&search=Monterrey" class="link-nombre">
+			<div class="discovery-card" style="background-image: url('/assets/chichen.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h2><strong>Yucatán</strong></h2>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+<br>
+
+<div class="text-center">
+	<h2>Recetas populares</h2>
+	<p>Deliciosos platillos por tu zona, encuentra lo que tiene tu ciudad para ofrecerte</p>
+</div>
+
+<br>
+
+<div class="row">
+	<% @comidas.each do |comida| %>
+		
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading preview">
+					<%= image_tag comida.show_first_photo(:medium)%>
+				</div>
+				<div class="panel-body">
+					<%= link_to comida.comida_nombre, comida %>
+				</div>
+			</div>
+		</div>
+
+	<% end %>
+</div>
+<br>
+<br>
+</div>

@@ -1,0 +1,189 @@
+<div class="container">
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Crea tu platillo
+	</div>
+	<div class="panel-body">
+		<div class="container">
+			
+			<%= form_for @comida, html: {multipart: true} do |f| %>
+
+				<div class="row">
+					<div class="col-md-4 select">
+						<div class="form-group">
+							<label>Tipo de Comida</label>
+							<%= f.select :tipo_comida, [["Aperitivo","Aperitivo"], ["Desayuno","Desayuno"], ["Brunch","Brunch"], ["Comida","Comida"], ["Cena","Cena"], ["Postre","Postre"], ["Picnic","Picnic"]], id: "tipo_comida", prompt: "Select...", class: "form-control" %>
+						</div>
+					</div>
+
+					<div class="col-md-4 select">
+						<div class="form-group">
+							<label>Tipo de cocina</label>
+							<%= f.select :tipo_cocina, [["Africana","Africana"], ["Alemana","Alemana"], ["Americana","Americana"], ["Asiática","Asiática"], ["Catalana","Catalana"], ["China","China"], ["Española","Española"], ["Francesa","Francesa"], ["Griega","Griega"], ["India","India"], ["Inglesa e Irlandesa","Inglesa e Irlandesa"], ["Italiana","Italiana"], ["Mexicana","Mexicana"], ["Portuguesa","Portuguesa"], ["Rusa","Rusa"], ["Sudamericana","Sudamericana"], ["Tailandesa","Tailandesa"], ["Turca","Turca"], ["Vasca","Vasca"], ["Vietnamita","Vietnamita"]],prompt: "Select...", class: "form-control" %>
+						</div>
+					</div>
+
+					<div class="col-md-4 select">
+						<div class="form-group">
+							<label>Porciones</label>
+							<%= f.select :porciones, [["1",1], ["2",2], ["3",3], ["4",4], ["5",5], ["6+",6]], prompt: "Select...", class: "form-control" %>
+						</div>
+					</div>
+				</div>
+
+				
+
+				<div class="row">
+					<div class="form-group">
+						<label>Titulo del platillo</label>
+						<%= f.text_field :comida_nombre, placeholder: "Sea claro y descriptivo", class: "form-control" %>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group">
+						<label>Resumen</label>
+						<%= f.text_area :resumen, rows: 5, placeholder: "Cuentanos mas acerca del platillo", class: "form-control" %>
+					</div>
+				</div>
+
+				
+
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group">
+							<%= f.check_box :es_alergia_habas %> Alergia a las habas
+						</div>
+						<div class="form-group">
+							<%= f.check_box :es_alergia_habas_soya %> Alergia a las habas de soja
+						</div>
+						<div class="form-group">
+							<%= f.check_box :es_alergia_nueces %> Alergia a las nueces
+						</div>
+						<div class="form-group">
+							<%= f.check_box :es_alergia_huevos %> Alergia a los huevos
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<div class="form-group">
+							<%= f.check_box :es_alergia_mariscos %> Alergia al marisco
+						</div>
+						<div class="form-group">
+							<%= f.check_box :es_alergia_gluten %> Alergia al gluten
+						</div>
+						<div class="form-group">
+							<%= f.check_box :es_alergia_pescado %> Alergia al pescado
+						</div>
+						<div class="form-group">
+							<%= f.check_box :es_alergia_sesamo %> Alergia al sésamo
+						</div>
+					</div>	
+
+					<div class="col-md-3">
+						<div class="form-group">
+							<%= f.check_box :es_diabetes %> Diabetes
+						</div>
+						<div class="form-group">
+							<%= f.check_box :es_halal %> Halal
+						</div>
+						<div class="form-group">
+							<%= f.check_box :es_intolerante_lactosa %> Intolerancia a la lactosa
+						</div>
+						<div class="form-group">
+							<%= f.check_box :es_kosher %> Kosher
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<div class="form-group">
+							<%= f.check_box :es_nocerdo %> No cerdo
+						</div>
+						<div class="form-group">
+							<%= f.check_box :es_organica %> Organica
+						</div>
+						<div class="form-group">
+							<%= f.check_box :es_singluten %> Sin gluten
+						</div>
+						<div class="form-group">
+							<%= f.check_box :es_vegana %> Vegana
+						</div>
+
+						<div class="form-group">
+							<%= f.check_box :es_vegetariana %> Vegetariana
+						</div>
+					</div>
+				</div>	
+
+				<div class="row">
+					<div class="form-group">
+						<label>Dirección</label>
+						<%= f.text_field :direccion, placeholder: "¿Desde donde sale el pedido?", class: "form-control" %>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4 nopadding">
+						<div class="form-group">
+							<label>Precio por platillo</label>
+							<div class="input-group">
+								<div class="input-group-addon">$</div>
+								<%= f.text_field :precio, placeholder: "ej. $100", class: "form-control" %>
+								
+							</div>	
+						</div>
+
+						<div class="form-group">
+							<label>Tiempo de anticipación de pedido</label>
+							<div class="input-group">
+								<div class="input-group-addon">Hrs</div>
+								<%= f.text_field :tiempo_anticipacion, placeholder: "ej. 4", class: "form-control" %>
+							</div>	
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group">
+						<%= f.check_box :active %> Platillo Activo
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<span class="btn btn-default btn-file">
+								<i class ="fa fa-cloud-upload fa-lg"></i> Upload Photos
+								<%= file_field_tag "images[]", type: :file, multiple: true %>
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div id="photos"><%= render 'photos/list' %></div>
+
+				<div class="row">
+					<div class="form-group">
+						<%= f.check_box :es_servicio_domicilio %> Es servicio a domicilio?
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4 select nopadding">
+						<div class="form-group">
+							<label>Rango</label>
+							<%= f.select :rango, [["1",1], ["2",2], ["3",3], ["4",4], ["5",5], ["6+",6]], prompt: "Select...", class: "form-control" %>
+						</div>
+					</div>
+				</div>
+
+				<div class="actions">
+					<%= f.submit "Guardar", class: "btn btn-primary" %>
+				</div>
+
+			<% end %>
+
+		</div>
+	</div>
+</div>
+</div>

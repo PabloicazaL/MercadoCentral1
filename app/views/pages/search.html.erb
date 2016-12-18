@@ -1,0 +1,142 @@
+
+	<div class="">
+            <div class="vz-city-banner" style="background-image:url(/assets/search.jpg);">
+                <div class="vz-city-banner-content">
+                    <h1>Mexico</h1>
+                    <h2></h2>
+                </div>
+            </div>
+     </div>
+	
+
+ <div class="container">
+<div id="wrapper">
+
+	<div id="article">
+		
+		<div class="row">
+			<%= search_form_for @search, url: search_path do |f| %>
+
+				<%= f.hidden_field :precio, id: 'pedido_cantidad' %>
+
+				
+				<div class="row">
+					
+					
+						<div class="col-md-4">
+							<p>
+							  <label for="amount">Price range:</label>
+							  <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold; background: transparent;">
+							</p>
+						</div>
+						<div class="col-md-8">
+							<div id="slider-range"></div>
+						</div>
+
+					
+				</div>
+				
+				<hr>
+
+				<div class="row">
+					<div class="col-md-2">
+						<%= check_box_tag "q[tipo_cocina_eq_any][]", "Africana" %> Comida Africana
+					</div>
+					<div class="col-md-2">
+						<%= check_box_tag "q[tipo_cocina_eq_any][]", "Alemana" %> Comida Alemana
+					</div>
+					<div class="col-md-2">
+						<%= check_box_tag "q[tipo_cocina_eq_any][]", "Americana" %> Comida Americana
+					</div>
+				</div>
+
+				<hr>
+
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label>¿Personas?</label>
+							<%= f.select :porciones_eq, [["1",1], ["2",2], ["3",3], ["4",4], ["5",5], ["6+",6]], prompt: "Select...", class: "form-control" %>
+						</div>
+					</div>
+
+					<div class="col-md-4">
+						<div class="form-group">
+							<label>Tiempo de anticipación</label>
+							<%= f.select :tiempo_anticipacion_lteq, [["1",1], ["2",2], ["3",3], ["4+",4]], prompt: "Select...", class: "form-control" %>
+						</div>
+					</div>
+
+					
+				</div>
+
+				<hr>
+
+				<div class="row">
+					<div class="col-md-4">
+						<%= check_box_tag "q[es_alergia_habas_eq]", true %> Alergia a las habas
+					</div>
+					<div class="col-md-4">
+						<%= check_box_tag "q[es_alergia_habas_soya_eq]", true %> Alergia a las habas de soja
+					</div>
+					<div class="col-md-4">
+						<%= check_box_tag "q[es_alergia_nueces_not_eq]", true %> Alergia a las nueces
+					</div>
+					<div class="col-md-4">
+						<%= check_box_tag "q[es_alergia_huevos_eq]", true %> Alergia a los huevos
+					</div>
+					<div class="col-md-4">
+						<%= check_box_tag "q[es_alergia_mariscos_eq]", true %> Alergia al marisco
+					</div>
+				</div>
+
+				<br>
+
+				<div class="row">
+					<%= f.submit "Buscar", class: "btn btn-primary" %>
+				</div>
+
+			<% end %>
+
+			<hr>
+
+			<div class="row">
+				<% @arrComidas.each do |comida| %>
+					
+					<div class="col-md-4">
+						<div class="panel panel-default">
+							<div class="panel-heading preview">
+								<%= image_tag comida.show_first_photo(:medium)%>
+							</div>
+							<div class="panel-body">
+								<%= link_to comida.comida_nombre, comida %>
+							</div>
+						</div>
+					</div>
+
+				<% end %>
+			</div>
+
+
+		</div>
+
+	</div>
+
+</div>
+</div>
+<script>
+  $( function() {
+    $( "#slider-range" ).slider({
+      range: true,
+      min: 0,
+      max: 500,
+      values: [ 50, 300 ],
+      slide: function( event, ui ) {
+        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+      }
+    });
+    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+  } );
+
+  </script>

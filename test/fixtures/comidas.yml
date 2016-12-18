@@ -1,0 +1,63 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tipo_comida: MyString
+  tipo_cocina: MyString
+  porciones: 1
+  comida_nombre: MyString
+  resumen: MyText
+  es_alergia_habas: false
+  es_alergia_habas_soya: false
+  es_alergia_nueces: false
+  es_alergia_huevos: false
+  es_alergia_mariscos: false
+  es_alergia_gluten: false
+  es_alergia_pescado: false
+  es_alergia_sesamo: false
+  es_diabetes: false
+  es_halal: false
+  es_intolerante_lactosa: false
+  es_kosher: false
+  es_nocerdo: false
+  es_organica: false
+  es_singluten: false
+  es_vegana: false
+  es_vegetariana: false
+  precio: 1
+  tiempo_anticipacion: 1
+  es_servicio_domicilio: false
+  rango: 1
+  direccion: MyString
+  active: false
+  user_id: 
+
+two:
+  tipo_comida: MyString
+  tipo_cocina: MyString
+  porciones: 1
+  comida_nombre: MyString
+  resumen: MyText
+  es_alergia_habas: false
+  es_alergia_habas_soya: false
+  es_alergia_nueces: false
+  es_alergia_huevos: false
+  es_alergia_mariscos: false
+  es_alergia_gluten: false
+  es_alergia_pescado: false
+  es_alergia_sesamo: false
+  es_diabetes: false
+  es_halal: false
+  es_intolerante_lactosa: false
+  es_kosher: false
+  es_nocerdo: false
+  es_organica: false
+  es_singluten: false
+  es_vegana: false
+  es_vegetariana: false
+  precio: 1
+  tiempo_anticipacion: 1
+  es_servicio_domicilio: false
+  rango: 1
+  direccion: MyString
+  active: false
+  user_id: 

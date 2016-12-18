@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  comida_id: 
+  fecha_pedido: 2016-11-05 00:43:07
+  precio: 1
+  total: 1
+
+two:
+  user_id: 
+  comida_id: 
+  fecha_pedido: 2016-11-05 00:43:07
+  precio: 1
+  total: 1
